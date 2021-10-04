@@ -9,12 +9,13 @@ services:
       - "53:53/tcp"
       - "53:53/udp"
       - "67:67/udp"
+      - "${WEB_SOCK}:80"
     environment:
-      TZ: 'Asia/Ho_Chi_Minh'
-      WEBPASSWORD: $WEBPASSWORD
+      TZ: Asia/Ho_Chi_Minh
+      WEBPASSWORD: ${WEB_PASSWORD}
     volumes:
-      - './etc-pihole/:/etc/pihole/'
-      - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
+      - ./etc-pihole/:/etc/pihole/
+      - ./etc-dnsmasq.d/:/etc/dnsmasq.d/
     dns:
       - 1.1.1.1
       - 8.8.8.8
